@@ -2,7 +2,9 @@ import React, { ReactNode, useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Cookie from 'universal-cookie';
+import { Tabs } from 'antd';
 import Test from './Test';
+import LeaveAppliane from './LeaveAppliance';
 interface IProps {
   children: ReactNode;
 }
@@ -18,9 +20,17 @@ const PublicLayout = ({ children }: IProps) => {
   }, [navigate]);
 
   const test = true;
+  const { TabPane } = Tabs;
 
   return test ? (
-    <Test />
+    <Tabs defaultActiveKey="1">
+      <TabPane tab="Chấm công" key="1">
+        <Test />
+      </TabPane>
+      <TabPane tab="Đơn nghỉ" key="2">
+        <LeaveAppliane />
+      </TabPane>
+    </Tabs>
   ) : (
     <Row align="middle" justify="space-around" className="flex-center">
       <Col
